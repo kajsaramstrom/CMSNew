@@ -68,7 +68,7 @@ public class HomeSurfaceController : SurfaceController
                                 <body style='background-color: #a3b3af; color: #3c2f26; font-family: Arial, sans-serif;'>
                                     <div style='background-color: #a3b3af; padding: 20px; border-radius: 5px; max-width: 600px; margin: 0 auto; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);'>
                                         <div style='text-align: center; margin-bottom: 20px;'>
-                                            <img src='https://onatrix20240923143448.azurewebsites.net/media/v5vdjmxw/onatrixlogobrand.svg' alt='Företagslogotyp' style='width: 150px;' /> <!-- Publik URL till logotypen -->
+                                            <img src='https://web-app-kajsa-g5ddfrfccgath7ge.westeurope-01.azurewebsites.net/media/vorhtdu3/logotype.svg' alt='Företagslogotyp' style='width: 150px;' /> <!-- Publik URL till logotypen -->
                                         </div>
                                         <div style='text-align: left; font-size: 16px;'>
                                             <p style='font-size:16px; color:#3c2f26;'><strong>Hej {form.Name},</strong></p>

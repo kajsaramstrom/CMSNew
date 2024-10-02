@@ -1,0 +1,21 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@{
+    var brandsOne = Model?.Value<IPublishedContent>("brandsOne")?.Url() ?? "";
+    var brandsTwo = Model?.Value<IPublishedContent>("brandsTwo")?.Url() ?? "";
+    var brandsThree = Model?.Value<IPublishedContent>("brandsThree")?.Url() ?? "";
+    var brandsFour = Model?.Value<IPublishedContent>("brandsFour")?.Url() ?? "";
+    var brandsFive = Model?.Value<IPublishedContent>("brandsFive")?.Url() ?? "";
+    var brandsSix = Model?.Value<IPublishedContent>("brandsSix")?.Url() ?? ""; 
+}
+
+<section class="brands">
+    <div class="container">
+        <img class="rotate" src="@brandsOne" alt="freedombird">
+        <img class="rotate" src="@brandsTwo" alt="identity">
+        <img class="rotate" src="@brandsThree" alt="natural">
+        <img class="rotate" src="@brandsFour" alt="simpleaf">
+        <img class="rotate" src="@brandsFive" alt="globe">
+        <img class="rotate" src="@brandsSix" alt="fossilgroup">
+    </div>
+</section>

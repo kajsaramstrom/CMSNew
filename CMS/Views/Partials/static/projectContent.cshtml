@@ -1,0 +1,87 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@using Umbraco.Cms.Core.Routing;
+@inject IPublishedUrlProvider PublishedUrlProvider;
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+ 
+ 
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var content = Umbraco.Content(Guid.Parse("ada98627-3c9a-4844-b329-5b8bf02a994f"));
+    var selection = Enumerable.Empty<IPublishedContent>();
+    var projectPageStaticRight = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "projectPageStaticRight") ?? null;
+    var tagsTitle = projectPageStaticRight?.Value<string>("tagsTitle") ?? "";
+    var tags = projectPageStaticRight?.Value<IEnumerable<string>>("tags") ?? Enumerable.Empty<string>();
+    var formTitle = projectPageStaticRight?.Value<string>("formTitle") ?? "";
+    var formText = projectPageStaticRight?.Value<string>("formText") ?? "";
+    var formPlaceholderText = projectPageStaticRight?.Value<string>("formPlaceholderText") ?? "";
+    var formButtonText = projectPageStaticRight?.Value<string>("formButtonText") ?? "";
+    var formImage = projectPageStaticRight?.Value<IPublishedContent>("formImage")?.Url() ?? "";
+   
+    if (content != null)
+    {
+        selection = content.ChildrenOfType("projectItemTemplate").Where(x => x.IsVisible());
+    }
+}
+
+ 
+<section class="projects-content bg-light">
+    <div class="container">
+        <div class="contentleft">
+            @foreach(var item in selection)
+            {
+                var title = item?.Value<string>("pageTitle") ?? "";
+                var date = item?.Value<DateTime>("projectDate").ToString("MMMM dd, yyyy") ?? "";
+                var thumbnail = item?.Value<IPublishedContent>("thumbnail")?.Url() ?? "";
+                var description = item?.Value<string>("projectDescription") ?? ""; 
+                 
+                <a href="@item.Url()" class="article fade">      
+                    <img class="fade" src="@thumbnail" alt="article-image">
+                
+                    <div class="info">
+                        <h4 class="title">@title</h4>
+                        <p class="date"><i class="fa-solid fa-calendar-days"></i> @date</p>
+                        <p>@description</p>
+                        <h6>Read more <span><i class="fa-solid fa-arrow-right"></i></span></h6>
+                    </div>
+                </a>
+
+                <hr>
+
+            }
+            
+            <div class="buttons">
+                <a class="link-gray" href="#">Prev</a>
+                <a class="btn-menu" href="#">1</a>
+                <a class="link-primary" href="#">2</a>
+                <a class="link-primary" href="#">Next</a>
+            </div>
+        </div>
+
+        <div class="content-right">
+            <nav>
+                <h4 class="tags-title">@tagsTitle</h4>
+
+                <div class="buttons">
+                    @foreach(var tag in tags)
+                    {
+                        <div>
+                            <a href="#" class="btn btn-light pricing">@tag</a>
+                        </div>
+                    }       
+                </div>
+
+                <div class="form-box bg-primary">
+                    <h4 class="form-title">@formTitle</h4>
+                    <p>@formText</p>
+                    <img class="fade" src="@formImage" alt="support-box-background-image">
+
+                    <form class="email-form">
+                        <input class="email-input" type="email" placeholder="@formPlaceholderText">
+                        <button><i class="fa-regular fa-envelope"></i></button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,98 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@using Umbraco.Cms.Core.Routing;
+@inject IPublishedUrlProvider PublishedUrlProvider;
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+ 
+ 
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var content = Umbraco.Content(Guid.Parse("ada98627-3c9a-4844-b329-5b8bf02a994f"));
+    var selection = Enumerable.Empty<IPublishedContent>();
+    var projectPageStaticRight = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "projectPageStaticRight") ?? null;
+    var tagsTitle = projectPageStaticRight?.Value<string>("tagsTitle") ?? "";
+    var tags = projectPageStaticRight?.Value<IEnumerable<string>>("tags") ?? Enumerable.Empty<string>();
+    var formTitle = projectPageStaticRight?.Value<string>("formTitle") ?? "";
+    var formText = projectPageStaticRight?.Value<string>("formText") ?? "";
+    var formPlaceholderText = projectPageStaticRight?.Value<string>("formPlaceholderText") ?? "";
+    var formButtonText = projectPageStaticRight?.Value<string>("formButtonText") ?? "";
+    var formImage = projectPageStaticRight?.Value<IPublishedContent>("formImage")?.Url() ?? "";
+    var date = Model?.Value<DateTime>("projectDate").ToString("MMMM dd, yyyy") ?? "";
+   
+    if (content != null)
+    {
+        selection = content.ChildrenOfType("projectItemTemplate").Where(x => x.IsVisible());
+    }
+
+    var singleProjectImageOne = Model?.Value<IPublishedContent>("thumbnail")?.Url() ?? "";
+}
+
+<section class="single-project bg-light">
+    <div class="container">
+        <div class="content-left">
+            <p class="article-date"><i class="fa-solid fa-calendar-days"></i>@date</p>
+            <h6>@Model.Value("projectIngress")</h6>
+            <img class="imgOne fade" src="@singleProjectImageOne" alt="project-details-image-1">
+            
+            @Model.Value("projectContent")    
+            <div class="tags">
+                <h6>Tags:</h6>
+                <a href="#" class="btn btn-accent">Business</a>
+                <a href="#" class="btn btn-accent">Consulting</a>
+                <a href="#" class="btn btn-accent">Onatrix</a>
+            </div>
+        </div>
+        
+        <div class="content-right">
+            <nav>
+                <div class="recent-projects-info">
+                    <h4>Recent projects</h4>
+
+                    @foreach(var item in selection)
+                    {
+                        var title = item?.Value<string>("pageTitle") ?? "";
+                        var singleDate = item?.Value<DateTime>("projectDate").ToString("MMMM dd, yyyy") ?? "";
+                        var thumbnail = item?.Value<IPublishedContent>("thumbnail")?.Url() ?? "";
+
+                        <a href="@item.Url()" class="articles">
+                            <div class="recent-projects">
+                            <img class="project-thumbnail fade" src="@thumbnail" alt="article-image">
+                        
+                                    <div class="info">
+                                    <h6>@title</h6>
+                                    <p class="date"><i class="fa-solid fa-calendar-days"></i> @singleDate</p>
+                                    
+                                </div>
+                                
+                            </div>        
+                        </a>  
+
+                        <hr class="line">
+                    }
+                </div>                
+
+                <h4 class="title">Tags</h4>
+
+                <div class="buttons">
+                    
+                    @foreach(var tag in tags)
+                    {
+                        <div>
+                            <a href="#" class="btn btn-light">@tag</a>
+                        </div>
+                    }
+                </div>               
+
+                <div class="box bg-primary">   
+                    <h5>@formTitle</h5>
+                    <p>@formText</p>
+                        <img src="@formImage" alt="support-box-background-image">
+                    <form>
+                        <input type="email" placeholder="@formPlaceholderText">
+                        <button><i class="fa-regular fa-envelope"></i></button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>

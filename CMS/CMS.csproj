@@ -1,0 +1,91 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <Content Include="wwwroot\media\hmhjv1ck\projectstaticrightimage.svg" />
+    <Content Include="wwwroot\media\1jrfoyls\ourprojectsimage3.svg" />
+    <Content Include="wwwroot\media\2q5n4byh\expertimage3.svg" />
+    <Content Include="wwwroot\media\3dfmz5qm\backgroundimagetopright.svg" />
+    <Content Include="wwwroot\media\3hsbljor\projectsarticleimage2.svg" />
+    <Content Include="wwwroot\media\3pxabiae\ourprojectsimage1.svg" />
+    <Content Include="wwwroot\media\3t5nvub5\aboutuskevingardner.svg" />
+    <Content Include="wwwroot\media\4pzejtj2\ourprojectsimage4.svg" />
+    <Content Include="wwwroot\media\5fbidxdn\homebrand3.svg" />
+    <Content Include="wwwroot\media\5nidk0tg\storybackgroundimage.svg" />
+    <Content Include="wwwroot\media\agmfxgy0\imageofaman.svg" />
+    <Content Include="wwwroot\media\ancfj33r\homebrand1.svg" />
+    <Content Include="wwwroot\media\ap0br2tl\projectdetailsimage1.svg" />
+    <Content Include="wwwroot\media\bhtos5cb\ourprojectsimage2.svg" />
+    <Content Include="wwwroot\media\d4ynok2w\storyimage.svg" />
+    <Content Include="wwwroot\media\drblt45x\projectdetailsimage3.svg" />
+    <Content Include="wwwroot\media\ezmfvrkk\riskmangementimage1.svg" />
+    <Content Include="wwwroot\media\fjxlwxod\ourservicesimage4.svg" />
+    <Content Include="wwwroot\media\fn2e4hmq\ourservicesimage5.svg" />
+    <Content Include="wwwroot\media\gibmfapb\recentprojects.svg" />
+    <Content Include="wwwroot\media\gtuijsmm\backgroundimagetopleft.svg" />
+    <Content Include="wwwroot\media\h3bc0dbd\supportboximage.svg" />
+    <Content Include="wwwroot\media\hldpgu4x\projectsarticleimage3.svg" />
+    <Content Include="wwwroot\media\jtilwohb\riskmangementimage2.svg" />
+    <Content Include="wwwroot\media\jzcn02ng\expertimage6.svg" />
+    <Content Include="wwwroot\media\mjgnemhq\expertimage4.svg" />
+    <Content Include="wwwroot\media\mqqmfos4\aboutusnavimage.svg" />
+    <Content Include="wwwroot\media\mwxjygra\ourservicesimage6.svg" />
+    <Content Include="wwwroot\media\mxdbh3nq\projectsarticleimage4.svg" />
+    <Content Include="wwwroot\media\niebgfva\homebrand5.svg" />
+    <Content Include="wwwroot\media\nycfjpzo\homebrand4.svg" />
+    <Content Include="wwwroot\media\olffxs05\ourservicesimage2.svg" />
+    <Content Include="wwwroot\media\osggjnnt\ourservicesimage3.svg" />
+    <Content Include="wwwroot\media\pfzheao5\expertimage5.svg" />
+    <Content Include="wwwroot\media\pupbow4w\projectsarticleimage1.svg" />
+    <Content Include="wwwroot\media\qngl3csu\projectdetailsimage2.svg" />
+    <Content Include="wwwroot\media\qybg5ku5\homebrand6.svg" />
+    <Content Include="wwwroot\media\qytjuzat\ourservicesimage1.svg" />
+    <Content Include="wwwroot\media\rs3lxf1j\clientsimage.svg" />
+    <Content Include="wwwroot\media\tdpnsalz\expertimage1.svg" />
+    <Content Include="wwwroot\media\tlhlphye\homebrand2.svg" />
+    <Content Include="wwwroot\media\tzhblt0w\expertimage2.svg" />
+    <Content Include="wwwroot\media\uyobtp2d\backgroundimageofaman.svg" />
+    <Content Include="wwwroot\media\vorhtdu3\logotype.svg" />
+    <Content Include="wwwroot\media\wagbiqjc\herobackgroundimage.svg" />
+    <Content Include="wwwroot\media\xjsbbnxz\abouttinafoximage.svg" />
+    <Content Include="wwwroot\media\xrepg5zg\primarybackground.svg" />
+    <Content Include="wwwroot\media\ygglkgho\expertimage7.svg" />
+    <Content Include="wwwroot\media\yzxdms0p\clientsbackgroundimage.svg" />
+    <Content Include="wwwroot\media\z5yjhui1\signature.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SendGrid" Version="9.29.3" />
+    <PackageReference Include="Umbraco.Cms" Version="14.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
+    <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
+    <PackageReference Include="uSync" Version="14.0.0" />
+    <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\scss\sections\projectsDetails\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Razor files are needed for the backoffice to work correctly -->
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Remove RazorCompileOnBuild and RazorCompileOnPublish when not using ModelsMode InMemoryAuto -->
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+  </PropertyGroup>
+
+</Project>

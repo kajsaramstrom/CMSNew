@@ -133,18 +133,42 @@ header .header-nav .container .head-nav .head-link-active {
   margin: 10px 10px 0 10px;
   text-decoration: none;
 }
-header .header-nav .container .search {
-  display: flex;
-  align-items: center;
+header .header-nav .container #search-box {
+  display: block;
+  position: relative;
   grid-area: search;
-  color: var(--color-primary);
-  font-weight: 700;
-  text-decoration: none;
-  border: none;
-  background-color: transparent;
 }
 @media (min-width: 768px) {
-  header .header-nav .container .search {
+  header .header-nav .container #search-box {
     display: block;
   }
+}
+header .header-nav .container #search-box form {
+  display: flex;
+  align-items: center;
+}
+header .header-nav .container #search-box form .search-input {
+  border: 1px solid var(--color-primary);
+  border-radius: 20px;
+  padding: 5px 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+header .header-nav .container #search-box form .search-input:focus {
+  border-color: var(--color-accent);
+}
+header .header-nav .container #search-box form .search-button {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid var(--color-primary);
+  font-weight: 600;
+}
+header .header-nav .container #search-box form .search-button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
 }

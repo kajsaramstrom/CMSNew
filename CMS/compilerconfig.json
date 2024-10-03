@@ -202,5 +202,13 @@
   {
     "outputFile": "wwwroot/scss/sections/contact/contactInformation.css",
     "inputFile": "wwwroot/scss/sections/contact/contactInformation.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/sections/breadcrumb.css",
+    "inputFile": "wwwroot/scss/sections/breadcrumb.scss"
+  },
+  {
+    "outputFile": "wwwroot/scss/sections/letUsKnow.css",
+    "inputFile": "wwwroot/scss/sections/letUsKnow.scss"
   }
 ]
